@@ -1,18 +1,12 @@
 # Fault Localization to Detect Co-Change Fixing Locations
 
-<p aligh="center"> This repository contains the code for <b>Fault Localization to Detect Co-Change Fixing Locations</b> and the Page (https://github.com/fixlocatorresearch/fixlocator-public) that has some visualizd data. </p>
+<p aligh="center"> This repository contains the code for <b>Fault Localization to Detect Co-Change Fixing Locations</b></p>
 
 ## Contents
-1. [Website](#Website)
-2. [Introduction](#Introduction)
-3. [Dataset](#Dataset)
-4. [Requirement](#Requirement)
-5. [Instruction](#Instruction)
-
-
-## Website
-
-We published the visualizd experimental results reported in the paper in Page(https://github.com/fixlocatorresearch/fixlocator-public).
+1. [Introduction](#Introduction)
+2. [Dataset](#Dataset)
+3. [Requirement](#Requirement)
+4. [Instruction](#Instruction)
 
 
 ## Introduction
