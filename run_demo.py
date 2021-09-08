@@ -6,9 +6,6 @@ import os
 from main import Tree
 
 
-a = np.load("D:\\research\\Fault_Localization\\fixlocatorcode\\processed\\index.npy", allow_pickle=True)
-b = np.array([a[0]])
-np.save("index.npy", b)
 dataset = []
 index_file = np.load(osp.join(os.getcwd(), 'processed/index.npy', ), allow_pickle=True)
 for i in range(len(index_file)):
