@@ -7,6 +7,7 @@
 2. [Dataset](#Dataset)
 3. [Requirement](#Requirement)
 4. [Instruction](#Instruction)
+5. [Demo](#Demo)
 
 
 ## Introduction
@@ -82,3 +83,11 @@ Install ```torch_geometric``` by following the instuction from [torch_geometric]
 ## Instruction
 
 Run ```main.py``` to see the result for our experiment. 
+
+## Demo
+
+Because we use leave-one-out evaluation strategy, there are 800+ models for each bugs. 
+
+If you only want to simply test our work, please download our demo that contains one model for on bug. Demo download: https://drive.google.com/file/d/1--nm86YoKF4XuPntpzv9eEARGyQcXOOT/view?usp=sharing 
+
+Put ```model.pt``` and ```processed``` in the same folder as FixLocator and then run ```run_demo.py``` to see the results.

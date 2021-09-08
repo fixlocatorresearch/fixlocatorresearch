@@ -47,26 +47,42 @@ class Tree(object):
 
 
 def start_training(dataset, index_data):
+    hit_all = []
     for i in range(len(index_data)):
         test_dataset = []
         train_dataset = []
+        max_length = dataset[0].x
+        max_length = max_length[3]
+        max_length = len(max_length[0])
         for j in range(len(dataset)):
             if j+1 in index_data[i]:
                 test_dataset.append(dataset[j])
             else:
                 train_dataset.append(dataset[j])
         model_ = model.FixLocator(h_size=64, feature_representation_size=128, drop_out_rate=0.5, layer_num=5,
-                                  code_cover_len=1469)
-        train(epochs=10, trainLoader=train_dataset, testLoader=test_dataset, model=model_, learning_rate=0.0001)
+                                  code_cover_len=max_length)
+        hit = train(epochs=100, trainLoader=train_dataset, testLoader=test_dataset, model=model_, learning_rate=0.0001)
+        hit_all.append(hit)
+    add_on = [0, 0, 0, 0, 0, 0]
+    for i in range(len(hit_all)):
+        for j in range(6):
+            add_on[j] = add_on[j] + hit_all[i][j]
+    print("Total Average:")
+    print("Hit-1\t", add_on[0])
+    print("Hit-2\t", add_on[1])
+    print("Hit-3\t", add_on[2])
+    print("Hit-4\t", add_on[3])
+    print("Hit-5\t", add_on[4])
+    print("Hit-5+\t", add_on[5])
 
 
 def evaluate_metrics(model, test_loader):
     model.eval()
     with torch.no_grad():
         hit = [0, 0, 0, 0, 0, 0]
+        correct = 0
+        total = 0
         for data in tqdm(test_loader):
-            correct = 0
-            total = 0
             _, out = model(data)
             pred = out.argmax(dim=1)
             pred = pred.numpy()
@@ -79,24 +95,25 @@ def evaluate_metrics(model, test_loader):
                     total = total + 1
                 if pred[i] == 1 and true_label[i] != 1:
                     total = total + 1
-            if correct == 1:
-                hit[0] = hit[0] + 1
-            if correct == 2:
-                hit[1] = hit[1] + 1
-            if correct == 3:
-                hit[2] = hit[2] + 1
-            if correct == 4:
-                hit[3] = hit[3] + 1
-            if correct == 5:
-                hit[4] = hit[4] + 1
-            if correct > 5:
-                hit[5] = hit[5] + 1
+        if correct == 1:
+            hit[0] = hit[0] + 1
+        if correct == 2:
+            hit[1] = hit[1] + 1
+        if correct == 3:
+            hit[2] = hit[2] + 1
+        if correct == 4:
+            hit[3] = hit[3] + 1
+        if correct == 5:
+            hit[4] = hit[4] + 1
+        if correct > 5:
+            hit[5] = hit[5] + 1
         print("Hit-1\t", hit[0])
         print("Hit-2\t", hit[1])
         print("Hit-3\t", hit[2])
         print("Hit-4\t", hit[3])
         print("Hit-5\t", hit[4])
         print("Hit-5+\t", hit[5])
+        return hit
 
 
 def train(epochs, trainLoader, testLoader, model, learning_rate):
@@ -104,6 +121,7 @@ def train(epochs, trainLoader, testLoader, model, learning_rate):
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     model.train()
     try:
+        hit = [0, 0, 0, 0, 0, 0]
         for e in range(epochs):
             for index, _data in enumerate(tqdm(trainLoader, leave=False)):
                 out = model(_data)
@@ -118,15 +136,56 @@ def train(epochs, trainLoader, testLoader, model, learning_rate):
                 sleep(0.05)
                 if index % 20 == 0:
                     print('epoch: {}, batch: {}, loss: {}'.format(e + 1, index + 1, loss.data))
-            evaluate_metrics(model=model, test_loader=testLoader)
+                torch.cuda.empty_cache()
+            hit = evaluate_metrics(model=model, test_loader=testLoader)
             sleep(0.1)
+        torch.save(model.state_dict(), "model.pt")
+        return hit
     except KeyboardInterrupt:
-        evaluate_metrics(model=model, test_loader=testLoader)
+        hit = evaluate_metrics(model=model, test_loader=testLoader)
+        return hit
+
+
+def test_demo(testLoader, model):
+    hit = evaluate_metrics(model=model, test_loader=testLoader)
+    return hit
+
+
+def demo_work(dataset, index_data):
+    hit_all = []
+    for i in range(len(index_data)):
+        test_dataset = []
+        train_dataset = []
+        max_length = dataset[0].x
+        max_length = max_length[3]
+        max_length = len(max_length[0])
+        for j in range(len(dataset)):
+            if j + 1 in index_data[i]:
+                test_dataset.append(dataset[j])
+            else:
+                train_dataset.append(dataset[j])
+        model_ = model.FixLocator(h_size=64, feature_representation_size=128, drop_out_rate=0.5, layer_num=5,
+                                  code_cover_len=max_length)
+        model_.load_state_dict(torch.load("model.pt"))
+        model_.eval()
+        hit = test_demo(testLoader=test_dataset, model=model_)
+        hit_all.append(hit)
+    add_on = [0, 0, 0, 0, 0, 0]
+    for i in range(len(hit_all)):
+        for j in range(6):
+            add_on[j] = add_on[j] + hit_all[i][j]
+    print("Total Average:")
+    print("Hit-1\t", add_on[0])
+    print("Hit-2\t", add_on[1])
+    print("Hit-3\t", add_on[2])
+    print("Hit-4\t", add_on[3])
+    print("Hit-5\t", add_on[4])
+    print("Hit-5+\t", add_on[5])
 
 
 if __name__ == '__main__':
     dataset = []
-    index_file = np.load(osp.join(os.getcwd(), 'processed/index.npy'))
+    index_file = np.load(osp.join(os.getcwd(), 'processed/index.npy', ), allow_pickle=True)
     for i in range(len(index_file)):
         for j in range(len(index_file[i])):
             data = torch.load(osp.join(os.getcwd(), 'processed/data_{}.pt'.format(index_file[i][j])))
