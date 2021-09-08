@@ -78,11 +78,13 @@ Where ```feature_1, feature_6``` are ```N*L*E, N'*L'*E``` sized torch tensors th
 
 ## Requirement
 
-Install ```Torch``` by following the instuction from [PyTorch](https://pytorch.org/get-started/locally).
+Install ```Torch``` by following the Instruction from [PyTorch](https://pytorch.org/get-started/locally).
 
-Install ```torch_sparse``` by following the instuction from [pytorch_sparse](https://github.com/rusty1s/pytorch_sparse).
+Install ```torch_sparse``` by following the Instruction from [pytorch_sparse](https://github.com/rusty1s/pytorch_sparse).
 
-Install ```torch_geometric``` by following the instuction from [torch_geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html).
+Install ```torch_geometric``` by following the Instruction from [torch_geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html).
+
+See [requirement.txt](https://github.com/fixlocatorresearch/fixlocatorresearch/blob/main/requirement.txt) for other required packages. 
 
 
 ## Instruction
@@ -91,7 +93,7 @@ Run ```main.py``` to see the result for our experiment.
 
 ## Demo
 
-Because we use leave-one-out evaluation strategy, there are 800+ models for each bugs. 
+Because we use leave-one-out evaluation strategy, there are 800+ models for each bugs which will lead to long period of run time, i.e. days, to run our approach and not suitable for a demo. 
 
 If you only want to simply test our work, please download our demo that contains one model for one bug. Demo download: https://drive.google.com/file/d/1--nm86YoKF4XuPntpzv9eEARGyQcXOOT/view?usp=sharing 
 
