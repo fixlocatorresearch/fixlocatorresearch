@@ -48,7 +48,7 @@ We published the visualized experimental results for our research in https://fix
 
 We published our processed dataset at https://drive.google.com/file/d/1Ue-0r31F7pncH742Iv31LIzqL-t2XMEp/view?usp=sharing
 
-Please create a ```processed``` folder under the root folder of FixLocator, download the dataset, unzip it and put all files in ```./processed``` folder.
+Please create a folder named ```processed``` under the root folder of FixLocator, download the dataset, unzip it and put all files in ```./processed``` folder.
 
 ### Use your own dataset
 
