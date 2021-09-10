@@ -2,6 +2,11 @@
 
 <p aligh="center"> This repository contains the code for <b>Fault Localization to Detect Co-Change Fixing Locations</b> and the webpage (https://fixlocatorresearch.github.io/fixlocator-public/) that has visualized data.</p>
 
+# Experimental Results and Data: https://fixlocatorresearch.github.io/fixlocator-public/
+# Source Code: https://github.com/fixlocatorresearch/fixlocatorresearch
+# Demo: https://github.com/fixlocatorresearch/fixlocatorresearch#Demo
+
+
 ## Contents
 1. [Website](#Website)
 2. [Introduction](#Introduction)
@@ -10,6 +15,9 @@
 5. [Instruction](#Instruction)
 6. [Demo](#Demo)
 
+## Website
+
+We published the visualized experimental results for our research in https://fixlocatorresearch.github.io/fixlocator-public/
 
 ## Introduction
 
@@ -37,10 +45,6 @@ empirical evaluation on real-world datasets shows that FixLocator
 relatively improves over the state-of-the-art statement-level FL
 baselines by locating more CC fixing statements from 26.5% to
 155.6%, and reduces the statements to be examined by 22%–30%.
-
-## Website
-
-We published the visualized experimental results for our research in https://fixlocatorresearch.github.io/fixlocator-public/
 
 ## Dataset
 
