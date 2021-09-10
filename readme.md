@@ -3,7 +3,7 @@
 <p aligh="center"> This repository contains the code for <b>Fault Localization to Detect Co-Change Fixing Locations</b> and the webpage (https://fixlocatorresearch.github.io/fixlocator-public/) that has visualized data.</p>
 
 # Experimental Results and Data: https://fixlocatorresearch.github.io/fixlocator-public/
-# Source Code: https://github.com/fixlocatorresearch/fixlocatorresearch
+# Source Code: https://github.com/fixlocatorresearch/fixlocatorresearch#Instruction
 # Demo: https://github.com/fixlocatorresearch/fixlocatorresearch#Demo
 
 
