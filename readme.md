@@ -3,7 +3,7 @@
 <p aligh="center"> This repository contains the code for <b>Fault Localization to Detect Co-Change Fixing Locations</b> and the webpage (https://fixlocatorresearch.github.io/fixlocator-public/) that has visualized data.</p>
 
 # Experimental Results and Data: https://fixlocatorresearch.github.io/fixlocator-public/
-# Source Code: https://github.com/fixlocatorresearch/fixlocatorresearch#Instruction
+# Source Code: https://github.com/fixlocatorresearch/fixlocatorresearch#Instruction#Instruction_to_Run_FixLocator
 # Demo: https://github.com/fixlocatorresearch/fixlocatorresearch#Demo
 
 
@@ -12,7 +12,7 @@
 2. [Introduction](#Introduction)
 3. [Dataset](#Dataset)
 4. [Requirement](#Requirement)
-5. [Instruction](#Instruction)
+5. [Instruction_to_Run_FixLocator](#Instruction_to_Run_FixLocator)
 6. [Demo](#Demo)
 
 ## Website
@@ -91,9 +91,9 @@ Install ```torch_geometric``` by following the Instruction from [torch_geometric
 See [requirement.txt](https://github.com/fixlocatorresearch/fixlocatorresearch/blob/main/requirement.txt) for other required packages. 
 
 
-## Instruction
+## Instruction_to_Run_FixLocator
 
-Run ```main.py``` to see the result for our experiment. 
+Download the FixLocator source code and run ```main.py``` to see the result for our experiment. 
 
 ## Demo
 
