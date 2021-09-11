@@ -61,7 +61,7 @@ def start_training(dataset, index_data):
                 train_dataset.append(dataset[j])
         model_ = model.FixLocator(h_size=64, feature_representation_size=128, drop_out_rate=0.5, layer_num=5,
                                   code_cover_len=max_length)
-        hit = train(epochs=100, trainLoader=train_dataset, testLoader=test_dataset, model=model_, learning_rate=0.0001)
+        hit = train(epochs=5, trainLoader=train_dataset, testLoader=test_dataset, model=model_, learning_rate=0.0001)
         hit_all.append(hit)
     add_on = [0, 0, 0, 0, 0, 0]
     for i in range(len(hit_all)):
@@ -174,6 +174,27 @@ def demo_work(dataset, index_data):
     for i in range(len(hit_all)):
         for j in range(6):
             add_on[j] = add_on[j] + hit_all[i][j]
+
+    print("Faulty Method: public UnivariateRealPointValuePair optimize")
+    print("Faulty Statements:")
+    print("return optimize(f, goal, min, max, 0);")
+    print("Located in the set?")
+    if add_on[3] == 1:
+        print("Yes")
+    print("Faulty Method: public UnivariateRealPointValuePair optimize")
+    print("Faulty Statements:")
+    print("final double bound1 = (i == 0) ? min : min + generator.nextDouble() * (max - min);")
+    print("Located in the set?")
+    if add_on[3] == 1:
+        print("Yes")
+    print("final double bound2 = (i == 0) ? max : min + generator.nextDouble() * (max - min);")
+    print("Located in the set?")
+    if add_on[3] == 1:
+        print("Yes")
+    print("optima[i] = optimizer.optimize(f, goal, FastMath.min(bound1, bound2), FastMath.max(bound1, bound2));")
+    print("Located in the set?")
+    if add_on[3] == 1:
+        print("Yes")
     print("Total Average:")
     print("Hit-1\t", add_on[0])
     print("Hit-2\t", add_on[1])

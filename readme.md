@@ -99,6 +99,6 @@ Download the FixLocator source code and run ```main.py``` to see the result for 
 
 Because we use leave-one-out evaluation strategy, there are 800+ models for each bugs which will lead to long period of run time, i.e. days, to run our approach and not suitable for a demo. 
 
-If you only want to simply test our work, please download our demo that contains one model for one bug. Demo download: https://drive.google.com/file/d/1--nm86YoKF4XuPntpzv9eEARGyQcXOOT/view?usp=sharing 
+If you only want to simply test our work, please download our demo that contains one model for one bug. Demo download: https://drive.google.com/file/d/1cgvtxggeQ6F6LoxVSbKtsvdKICHWLlNj/view?usp=sharing
 
 Put ```model.pt``` and ```processed``` in the root folder of FixLocator and then run ```run_demo.py``` to see the results.
