@@ -61,7 +61,7 @@ def start_training(dataset, index_data):
                 train_dataset.append(dataset[j])
         model_ = model.FixLocator(h_size=64, feature_representation_size=128, drop_out_rate=0.5, layer_num=5,
                                   code_cover_len=max_length)
-        hit = train(epochs=5, trainLoader=train_dataset, testLoader=test_dataset, model=model_, learning_rate=0.0001)
+        hit = train(epochs=100, trainLoader=train_dataset, testLoader=test_dataset, model=model_, learning_rate=0.0001)
         hit_all.append(hit)
     add_on = [0, 0, 0, 0, 0, 0]
     for i in range(len(hit_all)):
