@@ -175,14 +175,19 @@ def demo_work(dataset, index_data):
         for j in range(6):
             add_on[j] = add_on[j] + hit_all[i][j]
 
+    print("##########Faulty Method 1##########")
     print("Faulty Method: public UnivariateRealPointValuePair optimize")
+    print("")
     print("Faulty Statements:")
     print("==========Faulty Statement 1==========")
     print("return optimize(f, goal, min, max, 0);")
     print("Covered in the located set?")
     if add_on[3] == 1:
         print("Yes")
+    print(" ")
+    print("##########Faulty Method 2##########")
     print("Faulty Method: public UnivariateRealPointValuePair optimize")
+    print("")
     print("Faulty Statements:")
     print("==========Faulty Statement 2==========")
     print("final double bound1 = (i == 0) ? min : min + generator.nextDouble() * (max - min);")
